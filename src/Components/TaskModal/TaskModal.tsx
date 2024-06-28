@@ -3,14 +3,28 @@ import { TodoWrapper } from "../TodoWrapper/TodoWrapper";
 import React, { useCallback, useEffect, useState } from "react";
 
 export const TasksModal = React.memo((props: any) => {
-  const [tasks, setTasks] = useState<string[]>(props.notes);
+  const [tasks, setTasks] = useState<
+    Array<{
+      id: string;
+      task: string;
+      completed: boolean;
+      isEditing: boolean;
+    }>
+  >(props.notes);
 
   useEffect(() => {
     setTasks(props.notes);
   }, [props.notes]);
 
   const handleSaveTasks = useCallback(
-    (newTasks: any) => {
+    (
+      newTasks: Array<{
+        id: string;
+        task: string;
+        completed: boolean;
+        isEditing: boolean;
+      }>
+    ) => {
       setTasks(newTasks);
       props.onSave(props.date, newTasks);
     },

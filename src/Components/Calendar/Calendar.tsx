@@ -8,7 +8,7 @@ import { Box, Typography } from "@mui/material";
 
 export const Calendar = React.memo(() => {
   const [value, setValue] = React.useState<Dayjs | null>(dayjs());
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [notes, setNotes] = useState<Record<string, string[]>>({});
 
   useEffect(() => {

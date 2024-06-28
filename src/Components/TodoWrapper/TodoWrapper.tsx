@@ -12,9 +12,27 @@ export type TodoType = {
   completed: boolean;
   isEditing: boolean;
 };
+
+export type TodoWrapperType = {
+  tasks: Array<{
+    id: string;
+    task: string;
+    completed: boolean;
+    isEditing: boolean;
+  }>;
+  onSave: (
+    newTasks: Array<{
+      id: string;
+      task: string;
+      completed: boolean;
+      isEditing: boolean;
+    }>
+  ) => void;
+};
+
 export type FilterButtonsType = "Active" | "Completed" | "All";
 
-export const TodoWrapper = React.memo((props: any) => {
+export const TodoWrapper = React.memo((props: TodoWrapperType) => {
   const [todos, setTodos] = useState<Array<TodoType>>([]);
   const [filter, setFilter] = useState<FilterButtonsType>("All");
 

@@ -1,0 +1,14 @@
+.button-container button {
+  background-color: white; /* базовый цвет кнопок */
+  color: black;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.button-container button.active {
+  background-color: grey; /* цвет активной кнопки */
+  color: white;
+  border: 1px solid #aaa;
+}

@@ -1,19 +1,21 @@
 import { Box, Button, Modal, Typography } from "@mui/material";
 import { TodoWrapper } from "../TodoWrapper/TodoWrapper";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 export const TasksModal = React.memo((props: any) => {
-  //const [task, setTask] = useState<string>("");
   const [tasks, setTasks] = useState<string[]>(props.notes);
 
   useEffect(() => {
     setTasks(props.notes);
   }, [props.notes]);
 
-  const handleSaveTasks = (newTasks: any) => {
-    setTasks(newTasks);
-    props.onSave(props.date, newTasks);
-  };
+  const handleSaveTasks = useCallback(
+    (newTasks: any) => {
+      setTasks(newTasks);
+      props.onSave(props.date, newTasks);
+    },
+    [props]
+  );
 
   return (
     <Modal open={props.open} onClose={props.handleClose}>
